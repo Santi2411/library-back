@@ -2,17 +2,24 @@ import express from 'express';
 import morgan from 'morgan';
 import helmet from 'helmet';
 import cors from 'cors';
+import IndexRoutes from './routes/IndexRoutes';
+import UserRoutes from './routes/UserRoutes';
+import BookRoutes from './routes/BookRoutes';
+import DataBase from './config/Database';
+import ValidateEnv from './config/ValidateEnv';
 
 class Server {
     public app: express.Application;
 
     constructor() {
+        ValidateEnv();
         this.app = express();
         this.config();
         this.routes();
     }
 
     config() {
+        DataBase.runConnection();
         this.app.set('port', process.env.PORT || 3000);
         this.app.use(morgan('dev'));
         this.app.use(helmet());
@@ -22,7 +29,10 @@ class Server {
     }
 
     routes() {
-        this.app.get('/', (req, res) => { res.send('Hello World') });
+        const routes: Array<IndexRoutes> = [];
+
+        routes.push(new UserRoutes(this.app));
+        routes.push(new BookRoutes(this.app));
     }
 
     start() {
@@ -34,4 +44,3 @@ class Server {
 
 const server = new Server();
 server.start();
-
