@@ -2,10 +2,11 @@ import express from 'express';
 import morgan from 'morgan';
 import helmet from 'helmet';
 import cors from 'cors';
+import compression from 'compression';
 import IndexRoutes from './routes/IndexRoutes';
 import UserRoutes from './routes/UserRoutes';
 import BookRoutes from './routes/BookRoutes';
-import DataBase from './config/Database';
+import DataBase from './config/DataBase';
 import ValidateEnv from './config/ValidateEnv';
 
 class Server {
@@ -22,9 +23,10 @@ class Server {
         DataBase.runConnection();
         this.app.set('port', process.env.PORT || 3000);
         this.app.use(morgan('dev'));
+        this.app.use(express.json());
         this.app.use(helmet());
         this.app.use(cors());
-        this.app.use(express.json());
+        this.app.use(compression());
         this.app.use(express.urlencoded({ extended: false }));
     }
 
