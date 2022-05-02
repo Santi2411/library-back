@@ -7,15 +7,15 @@ class UserRoutes extends IndexRoutes {
     }
 
     setUpRoutes(): Application {
-        this.app.get('/user', (req: Request, res: Response) => { res.status(200).send({ message: 'User Get All Route' }) });
+        this.app.get('/users', (req: Request, res: Response) => { res.status(200).send({ message: 'User Get All Route' }) });
 
-        this.app.get('/user/:id', (req: Request, res: Response) => { res.status(200).send({ message: 'User Get One Route' }) });
+        this.app.get('/users/:id', (req: Request, res: Response) => { res.status(200).send({ message: 'User Get One Route' }) });
 
-        this.app.post('/user', (req: Request, res: Response) => { res.status(200).send({ message: 'User Post Route' }) });
+        this.app.post('/users', (req: Request, res: Response) => { res.status(200).send({ message: 'User Post Route' }) });
 
-        this.app.put('/user/:id', (req: Request, res: Response) => { res.status(200).send({ message: 'User Put Route' }) });
+        this.app.put('/users/:id', (req: Request, res: Response) => { res.status(200).send({ message: 'User Put Route' }) });
 
-        this.app.delete('/user/:id', (req: Request, res: Response) => { res.status(200).send({ message: 'User Delete Route' }) });
+        this.app.delete('/users/:id', (req: Request, res: Response) => { res.status(200).send({ message: 'User Delete Route' }) });
 
         return this.app;
     }

@@ -7,15 +7,15 @@ class BookRoutes extends IndexRoutes {
     }
 
     setUpRoutes(): Application {
-        this.app.get('/book', (req: Request, res: Response) => { res.status(200).send({ message: 'book Get All Route' }) });
+        this.app.get('/books', (req: Request, res: Response) => { res.status(200).send({ message: 'book Get All Route' }) });
 
-        this.app.get('/book/:id', (req: Request, res: Response) => { res.status(200).send({ message: 'book Get One Route' }) });
+        this.app.get('/books/:id', (req: Request, res: Response) => { res.status(200).send({ message: 'book Get One Route' }) });
 
-        this.app.post('/book', (req: Request, res: Response) => { res.status(200).send({ message: 'book Post Route' }) });
+        this.app.post('/books', (req: Request, res: Response) => { res.status(200).send({ message: 'book Post Route' }) });
 
-        this.app.put('/book/:id', (req: Request, res: Response) => { res.status(200).send({ message: 'book Put Route' }) });
+        this.app.put('/books/:id', (req: Request, res: Response) => { res.status(200).send({ message: 'book Put Route' }) });
 
-        this.app.delete('/book/:id', (req: Request, res: Response) => { res.status(200).send({ message: 'book Delete Route' }) });
+        this.app.delete('/books/:id', (req: Request, res: Response) => { res.status(200).send({ message: 'book Delete Route' }) });
 
         return this.app;
     }
